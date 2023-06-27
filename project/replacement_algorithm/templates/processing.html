@@ -2,10 +2,54 @@
 <html>
 <head>
     <title>Processing</title>
+    <style>
+        body {
+            background-color: #1f1f1f;
+            color: #ffffff;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 40%;
+            outline: 1px solid #ffffff;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #292929;
+        }
+
+        tr:hover {
+            background-color: #3f3f3f;
+        }
+
+        
+    </style>
 </head>
 <body>
     <h1>Processing Results</h1>
-    <h3>Result: {{ result }}</h3>
+    <table>
+        <tr>
+            <th>Step</th>
+            <th>Page</th>
+            <th>Frames</th>
+            <th>Hit/Miss</th>
+        </tr>
+        {% for step in result %}
+            <tr>
+                <td> {{ step.step }}</td> 
+                <td>{{ step.page }}</td>
+                <td>{{ step.frames }}</td>
+                <td>{{ step.hit_miss }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h3>Total Page Faults: {{ total_faults }}</h3>
     <a href="{% url 'homepage' %}">Go back</a>
 </body>
 </html>

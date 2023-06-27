@@ -1,7 +1,33 @@
-hello world 
-
-<form action = "/demo/processing/" method = "post">
-    {% csrf_token %}    <!-- this is a security feature, csrf token is used to prevent cross site request forgery -->
-     {{form}}
-    <input type = "submit" value = "submit">
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <style>
+        body {
+            background-color: #1f1f1f;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Page Replacement Algorithm</h1>
+    <form action="/demo/processing/" method="post">
+        {% csrf_token %}
+        <label for="frames">Number of Frames:</label>
+        <input type="number" name="frames" id="frames" required>
+        <br>
+        <label for="numbers">Page Reference String:</label>
+        <input type="text" name="numbers" id="numbers" required>
+        <br>
+        <label for="algorithm">Algorithm:</label>
+        <select name="algorithm" id="algorithm" required>
+            <option value="FIFO">FIFO</option>
+            <option value="LRU">LRU</option>
+            <option value="LFU">LFU</option>
+            <option value="MFU">MFU</option>
+        </select>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
