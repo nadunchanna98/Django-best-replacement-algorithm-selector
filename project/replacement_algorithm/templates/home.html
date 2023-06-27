@@ -6,28 +6,78 @@
         body {
             background-color: #1f1f1f;
             color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        select {
+            padding: 10px;
+            border: none;
+            background-color: #000000;
+            color: #ffff00;
+            border-radius: 4px;
+            width: 300px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #ffff00;
+            color: #000000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #cccc00;
         }
     </style>
 </head>
 <body>
-    <h1>Page Replacement Algorithm</h1>
-    <form action="/demo/processing/" method="post">
-        {% csrf_token %}
-        <label for="frames">Number of Frames:</label>
-        <input type="number" name="frames" id="frames" required>
-        <br>
-        <label for="numbers">Page Reference String:</label>
-        <input type="text" name="numbers" id="numbers" required>
-        <br>
-        <label for="algorithm">Algorithm:</label>
-        <select name="algorithm" id="algorithm" required>
-            <option value="FIFO">FIFO</option>
-            <option value="LRU">LRU</option>
-            <option value="LFU">LFU</option>
-            <option value="MFU">MFU</option>
-        </select>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="container">
+        <h1>Page Replacement Algorithm</h1>
+        <form action="/demo/processing/" method="post">
+            {% csrf_token %}
+            <label for="frames">Number of Frames:</label>
+            <input type="number" name="frames" id="frames" required>
+            <br>
+            <label for="numbers">Page Reference String:</label>
+            <input type="text" name="numbers" id="numbers" required>
+            <br>
+            <label for="algorithm">Algorithm:</label>
+            <select name="algorithm" id="algorithm" required>
+                <option value="FIFO">FIFO</option>
+                <option value="LRU">LRU</option>
+                <option value="LFU">LFU</option>
+                <option value="MFU">MFU</option>
+            </select>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>
