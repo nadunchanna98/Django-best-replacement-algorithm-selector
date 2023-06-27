@@ -1,0 +1,7 @@
+hello world 
+
+<form action = "/demo/processing/" method = "post">
+    {% csrf_token %}    <!-- this is a security feature, csrf token is used to prevent cross site request forgery -->
+     {{form}}
+    <input type = "submit" value = "submit">
+</form>
