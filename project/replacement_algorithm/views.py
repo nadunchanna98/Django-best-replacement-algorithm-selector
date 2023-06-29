@@ -34,6 +34,17 @@ def processing(request):
             for i, step in enumerate(result4, start=1):
                 step["step"] = i
 
+            min_faults = min(total_faults1, total_faults2, total_faults3, total_faults4)
+            best_algorithms = []
+            if total_faults1 == min_faults:
+                best_algorithms.append("FIRST IN FIRST OUT ALGORITHM")
+            if total_faults2 == min_faults:
+                best_algorithms.append("LEAST RECENTLY USED ALGORITHM")
+            if total_faults3 == min_faults:
+                best_algorithms.append("LEAST FREQUENTLY USED ALGORITHM")
+            if total_faults4 == min_faults:
+                best_algorithms.append("MOST FREQUENTLY USED ALGORITHM")
+
             return render(
                 request,
                 "processing.html",
@@ -46,7 +57,8 @@ def processing(request):
                     "total_faults3": total_faults3,
                     "result4": result4,
                     "total_faults4": total_faults4,
+                    "best_algorithms": best_algorithms,
                 },
             )
 
-    return render(request, "processing.html")
+    return render(request, "home.html")

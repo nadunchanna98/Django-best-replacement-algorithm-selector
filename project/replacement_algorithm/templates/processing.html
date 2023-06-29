@@ -7,6 +7,7 @@
             margin: 10px;
             background-color: #1f1f1f;
             color: #ffffff;
+            padding-bottom: 20px;
         }
 
         .table-container {
@@ -67,116 +68,157 @@
             text-align: center;
             font-size: 25px;
             margin-bottom: 20px;
-            color: #ffff00;
         }
+
+        .total {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #ffff00; 
+        }
+
+        a {
+            align-items: center;
+            text-decoration: none;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 20px;
+            background-color: #ffff00;
+            color: #000000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 45%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        a :hover {
+            background-color: #cccc00;
+            color: #000000;
+        }
+
+         /* Media Query for Mobile Devices */
+        @media (max-width: 768px) {
+            .table-container .table {
+                width: 90%; /* Adjust the width as needed */
+                margin: 0 auto;
+                margin-bottom: 20px;
+            }
+        }
+
+
+
     </style>
 </head>
 <body>
     <h1>Processing Results</h1>
 
-    <h2>Best Algorithm:
-        {% if total_faults1 <= total_faults2 and total_faults1 <= total_faults3 and total_faults1 <= total_faults4 %}
-            FIFO
-        {% endif %}
-        {% if total_faults2 <= total_faults1 and total_faults2 <= total_faults3 and total_faults2 <= total_faults4 %}
-            LRU
-        {% endif %}
-        {% if total_faults3 <= total_faults1 and total_faults3 <= total_faults2 and total_faults3 <= total_faults4 %}
-            LFU
-        {% endif %}
-        {% if total_faults4 <= total_faults1 and total_faults4 <= total_faults2 and total_faults4 <= total_faults3 %}
-            MFU
-        {% endif %}
-    </h2>
+    <h2>Best Algorithm(s):</h2>
+    {% for algorithm in best_algorithms %}
+        <p>{{ algorithm }}</p>
+    {% endfor %}
 
-    <div class="table-container">
-        <div class="table">
-            <table>
-                <caption>FIRST IN FIRST OUT ALGORITHM</caption>
+<div class="table-container">
+    <div class="table">
+        <table>
+            <caption>FIRST IN FIRST OUT ALGORITHM</caption> 
+            <tr>
+                <th>Step</th>
+                <th>Page</th>
+                <th>Frames</th>
+                <th>Hit/Miss</th>
+            </tr>
+            {% for step in result1 %}
                 <tr>
-                    <th>Step</th>
-                    <th>Page</th>
-                    <th>Frames</th>
-                    <th>Hit/Miss</th>
+                    <td>{{ step.step }}</td>
+                    <td>{{ step.page }}</td>
+                    <td>{{ step.frames }}</td>
+                    <td>{{ step.hit_miss }}</td>
                 </tr>
-                {% for step in result1 %}
-                    <tr>
-                        <td>{{ step.step }}</td>
-                        <td>{{ step.page }}</td>
-                        <td>{{ step.frames }}</td>
-                        <td>{{ step.hit_miss }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
-            <p>Total Page Faults: {{ total_faults1 }}</p>
-        </div>
-
-        <div class="table">
-            <table>
-                <caption>LEAST RECENTLY USED ALGORITHM</caption>
-                <tr>
-                    <th>Step</th>
-                    <th>Page</th>
-                    <th>Frames</th>
-                    <th>Hit/Miss</th>
-                </tr>
-                {% for step in result2 %}
-                    <tr>
-                        <td>{{ step.step }}</td>
-                        <td>{{ step.page }}</td>
-                        <td>{{ step.frames }}</td>
-                        <td>{{ step.hit_miss }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
-            <p>Total Page Faults: {{ total_faults2 }}</p>
-        </div>
+            {% endfor %}
+            <tr>
+                <td colspan="4" class="total"   >Total Page Faults: {{ total_faults1 }}</td>
+            </tr>
+        </table>
     </div>
 
-    <div class="table-container">
-        <div class="table">
-            <table>
-                <caption>LEAST FREQUENTLY USED ALGORITHM</caption>
+    <div class="table">
+        <table>
+            <caption>LEAST RECENTLY USED ALGORITHM</caption> 
+            <tr>
+                <th>Step</th>
+                <th>Page</th>
+                <th>Frames</th>
+                <th>Hit/Miss</th>
+            </tr>
+            {% for step in result2 %}
                 <tr>
-                    <th>Step</th>
-                    <th>Page</th>
-                    <th>Frames</th>
-                    <th>Hit/Miss</th>
+                    <td>{{ step.step }}</td>
+                    <td>{{ step.page }}</td>
+                    <td>{{ step.frames }}</td>
+                    <td>{{ step.hit_miss }}</td>
                 </tr>
-                {% for step in result3 %}
-                    <tr>
-                        <td>{{ step.step }}</td>
-                        <td>{{ step.page }}</td>
-                        <td>{{ step.frames }}</td>
-                        <td>{{ step.hit_miss }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
-            <p>Total Page Faults: {{ total_faults3 }}</p>
-        </div>
+            {% endfor %}
+            <tr>
+                <td colspan="4" class="total"   >Total Page Faults: {{ total_faults2 }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
 
-        <div class="table">
-            <table>
-                <caption>MOST FREQUENTLY USED ALGORITHM</caption>
+<div class="table-container">
+    <div class="table">
+        <table>
+            <caption>LEAST FREQUENTLY USED ALGORITHM</caption> 
+            <tr>
+                <th>Step</th>
+                <th>Page</th>
+                <th>Frames</th>
+                <th>Hit/Miss</th>
+            </tr>
+            {% for step in result3 %}
                 <tr>
-                    <th>Step</th>
-                    <th>Page</th>
-                    <th>Frames</th>
-                    <th>Hit/Miss</th>
+                    <td>{{ step.step }}</td>
+                    <td>{{ step.page }}</td>
+                    <td>{{ step.frames }}</td>
+                    <td>{{ step.hit_miss }}</td>
                 </tr>
-                {% for step in result4 %}
-                    <tr>
-                        <td>{{ step.step }}</td>
-                        <td>{{ step.page }}</td>
-                        <td>{{ step.frames }}</td>
-                        <td>{{ step.hit_miss }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
-            <p>Total Page Faults: {{ total_faults4 }}</p>
-        </div>
+            {% endfor %}
+            <tr>
+                <td colspan="4" class="total"  >Total Page Faults: {{ total_faults3 }}</td>
+            </tr>
+        </table>
     </div>
 
+    <div class="table">
+        <table>
+            <caption>MOST FREQUENTLY USED ALGORITHM</caption> 
+            <tr>
+                <th>Step</th>
+                <th>Page</th>
+                <th>Frames</th>
+                <th>Hit/Miss</th>
+            </tr>
+            {% for step in result4 %}
+                <tr>
+                    <td>{{ step.step }}</td>
+                    <td>{{ step.page }}</td>
+                    <td>{{ step.frames }}</td>
+                    <td>{{ step.hit_miss }}</td>
+                </tr>
+            {% endfor %}
+
+            <tr>
+                <td colspan="4" class="total">Total Page Faults: {{ total_faults4 }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+    
 
     <a href="{% url 'homepage' %}">Go back</a>
 </body>

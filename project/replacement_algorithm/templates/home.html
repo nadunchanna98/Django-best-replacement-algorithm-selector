@@ -50,10 +50,19 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
         }
 
         input[type="submit"]:hover {
             background-color: #cccc00;
+        }
+
+        /* Override disabled state style */
+        input[type="number"]:disabled,
+        input[type="text"]:disabled {
+            background-color: #000000;
+            color: #ffff00;
         }
     </style>
 </head>
@@ -67,14 +76,6 @@
             <br>
             <label for="numbers">Page Reference String:</label>
             <input type="text" name="numbers" id="numbers" required>
-            <br>
-            <label for="algorithm">Algorithm:</label>
-            <select name="algorithm" id="algorithm" required>
-                <option value="FIFO">FIFO</option>
-                <option value="LRU">LRU</option>
-                <option value="LFU">LFU</option>
-                <option value="MFU">MFU</option>
-            </select>
             <br>
             <input type="submit" value="Submit">
         </form>
