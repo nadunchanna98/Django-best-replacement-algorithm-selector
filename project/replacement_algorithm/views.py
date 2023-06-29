@@ -14,33 +14,38 @@ def processing(request):
 
         if form.is_valid():
             numbers_input = request.POST["numbers"]
-            algorithm = request.POST["algorithm"]
             num_frames = int(request.POST["frames"])
             numbers = [int(num) for num in numbers_input]
 
-            result = []
-            total_faults = 0
+            result1, total_faults1 = fifo(numbers, num_frames)
+            result2, total_faults2 = lru(numbers, num_frames)
+            result3, total_faults3 = lfu(numbers, num_frames)
+            result4, total_faults4 = mfu(numbers, num_frames)
 
-            if algorithm == "FIFO":
-                result, total_faults = fifo(numbers, num_frames)
-            elif algorithm == "LRU":
-                result, total_faults = lru(numbers, num_frames)
-            elif algorithm == "LFU":
-                result, total_faults = lfu(numbers, num_frames)
-            else:
-                result, total_faults = mfu(numbers, num_frames)
+            for i, step in enumerate(result1, start=1):
+                step["step"] = i
 
-            # Add step numbers to result
-            for i, step in enumerate(result, start=1):
+            for i, step in enumerate(result2, start=1):
+                step["step"] = i
+
+            for i, step in enumerate(result3, start=1):
+                step["step"] = i
+
+            for i, step in enumerate(result4, start=1):
                 step["step"] = i
 
             return render(
                 request,
                 "processing.html",
                 {
-                    "algorithm": algorithm,
-                    "result": result,
-                    "total_faults": total_faults,
+                    "result1": result1,
+                    "total_faults1": total_faults1,
+                    "result2": result2,
+                    "total_faults2": total_faults2,
+                    "result3": result3,
+                    "total_faults3": total_faults3,
+                    "result4": result4,
+                    "total_faults4": total_faults4,
                 },
             )
 

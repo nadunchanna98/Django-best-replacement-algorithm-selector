@@ -1,31 +1,33 @@
 def fifo(numbers, num_frames):
-    frames = []
+    frames = []     # List of numbers
     hits = 0
     misses = 0
-    result = []
+    result = []   # List of dictionaries
 
     for num in numbers:
-        step = {}
-        step["page"] = num
-        step["frames"] = frames.copy()
+        step = {}    # step is a dictionary
+        step["page"] = num       # step["page"] is a key and num is a value
+        # step["frames"] = frames.copy()   # step["frames"] is a key and frames.copy() is a value
 
-        if num in frames:
+        if num in frames:    # if num is in frames then it is a hit
             hits += 1
             step["hit_miss"] = "Hit"
         else:
-            if len(frames) < num_frames:
-                frames.append(num)
+            if len(frames) < num_frames:   # for the first time, frames is empty so len(frames) is 0 and num_frames is 3
+                frames.append(num)    # append is a function to add a value to a list
             else:
-                frames.pop(0)
+                frames.pop(0)     # pop is a function to remove a value from a list.
                 frames.append(num)
             misses += 1
             step["hit_miss"] = "Miss"
 
-        result.append(step)
+        step["frames"] = frames.copy()
+        result.append(step)    # dictionary is added to the list
 
     total_faults = misses
 
     return result, total_faults
+
 
 
 def lru(numbers, num_frames):
@@ -37,7 +39,7 @@ def lru(numbers, num_frames):
     for num in numbers:
         step = {}
         step["page"] = num
-        step["frames"] = frames.copy()
+        #step["frames"] = frames.copy()
 
         if num in frames:
             hits += 1
@@ -53,6 +55,7 @@ def lru(numbers, num_frames):
             misses += 1
             step["hit_miss"] = "Miss"
 
+        step["frames"] = frames.copy()
         result.append(step)
 
     total_faults = misses
@@ -70,7 +73,7 @@ def lfu(numbers, num_frames):
     for num in numbers:
         step = {}
         step["page"] = num
-        step["frames"] = frames.copy()
+        # step["frames"] = frames.copy()
 
         if num in frames:
             hits += 1
@@ -91,6 +94,7 @@ def lfu(numbers, num_frames):
             misses += 1
             step["hit_miss"] = "Miss"
 
+        step["frames"] = frames.copy()
         result.append(step)
 
     total_faults = misses
@@ -129,6 +133,7 @@ def mfu(numbers, num_frames):
             misses += 1
             step["hit_miss"] = "Miss"
 
+        step["frames"] = frames.copy()
         result.append(step)
 
     total_faults = misses
