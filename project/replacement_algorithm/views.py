@@ -15,7 +15,7 @@ def processing(request):
         if form.is_valid():
             numbers_input = request.POST["numbers"]
             num_frames = int(request.POST["frames"])
-            numbers = [int(num) for num in numbers_input]
+            numbers = [int(num) for num in numbers_input]  # convert to list of ints
 
             result1, total_faults1 = fifo(numbers, num_frames)
             result2, total_faults2 = lru(numbers, num_frames)

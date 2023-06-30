@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title>Best Page Replacement Algorithm</title>
     <style>
         body {
             background-color: #1f1f1f;
@@ -39,8 +39,10 @@
             background-color: #000000;
             color: #ffff00;
             border-radius: 4px;
-            width: 300px;
+            width: 100%;
+            max-width: 300px;
             margin-bottom: 10px;
+            
         }
 
         input[type="submit"] {
@@ -52,6 +54,8 @@
             cursor: pointer;
             font-size: 20px;
             font-weight: bold;
+            align-items: center;
+            text-align: center;
         }
 
         input[type="submit"]:hover {
@@ -64,11 +68,32 @@
             background-color: #000000;
             color: #ffff00;
         }
+
+        .button {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Responsive styles for mobile view */
+        @media (max-width: 700px) {
+            h1 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            input[type="number"],
+            input[type="text"],
+            select {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Page Replacement Algorithm</h1>
+        <h1>Best Page Replacement Algorithm Selector</h1>
         <form action="/demo/processing/" method="post">
             {% csrf_token %}
             <label for="frames">Number of Frames:</label>
@@ -77,7 +102,9 @@
             <label for="numbers">Page Reference String:</label>
             <input type="number" name="numbers" id="numbers" required>
             <br>
+            <div class =  " button" >
             <input type="submit" value="Submit">
+            </div>
         </form>
     </div>
 </body>
