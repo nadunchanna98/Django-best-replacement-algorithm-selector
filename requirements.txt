@@ -13,7 +13,7 @@ ipython
 ipython-genutils==0.2.0
 jedi==0.18.2
 jupyter_client
-jupyter_core==5.3.0
+jupyter_core
 matplotlib-inline==0.1.6
 mistune==2.0.5
 nest-asyncio==1.5.6
