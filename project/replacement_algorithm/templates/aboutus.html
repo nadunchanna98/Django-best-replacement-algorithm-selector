@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Us</title>
+    <style>
+        body {
+            margin: 10px;
+            background-color: #1f1f1f;
+            color: #ffffff;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-bottom: 20px;
+            text-align: justify 
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            align-items: center;
+            text-decoration: none;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 20px;
+            background-color: #ffff00;
+            color: #000000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            width: 200px;
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        a:hover {
+            background-color: #cccc00;
+            color: #000000;
+        }
+
+       h3 {
+            text-align: justify;
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            margin-left: 50px;
+        }
+    </style>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</head>
+<body>
+    <h1>About Us</h1>
+    <h2>Operating Systems (EC-6110) Group Assignment</h2>
+    <h3>Problem Statement:</h3>
+    <p>For a given reference string (should be given as input), select the best replacement algorithm from the following set of algorithms:</p>
+    <ul style="display: flex; flex-direction: column; align-items: justify; margin-left: 60px  ">  
+        <li>First In First Out (FIFO)</li>
+        <li>Least Recently Used (LRU)</li>
+        <li>Least Frequently Used (LFU)</li>
+        <li>Most Frequently Used (MFU)</li>
+    </ul>
+
+    <h3>Created by:</h3>
+    <ul style="display: flex; flex-direction: column; align-items: justify;  "> <!-- Added CSS to center-align team members -->
+        <ul>G.A.N.C. PERERA (2019/E/094)</ul>
+        <ul>W.M.R. SACHINTHANI (2019/E/117)</ul>
+        <ul>H.M.H.A. HEWANAYAKE (2019/E/045)</ul>
+    </ul>
+
+    <a href="{% url 'homepage' %}">Home Page</a>
+    <a href="javascript:void(0);" onclick="goBack();">Back</a>
+</body>
+</html>

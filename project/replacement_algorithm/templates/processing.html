@@ -1,225 +1,251 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Best Page Replacement Algorithm</title>
     <style>
-        body {
-            margin: 10px;
-            background-color: #1f1f1f;
-            color: #ffffff;
-            padding-bottom: 20px;
-        }
+      body {
+        margin: 10px;
+        background-color: #1f1f1f;
+        color: #ffffff;
+        padding-bottom: 20px;
+      }
 
-        .table-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
+      .table-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
 
+      .table-container .table {
+        width: 40%;
+        margin-right: 20px;
+        margin-left: 20px;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        outline: 1px solid #ffffff;
+      }
+
+      th,
+      td {
+        text-align: center;
+        padding: 8px;
+        border-bottom: 1px solid #ffffff;
+      }
+
+      tr:nth-child(even) {
+        background-color: #292929;
+      }
+
+      tr:hover {
+        background-color: #3f3f3f;
+      }
+
+      caption {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        margin-top: 10px;
+      }
+
+      p {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+        text-align: center;
+        color: #ffff00;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 25px;
+        margin-bottom: 20px;
+      }
+
+      .total {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #ffff00;
+      }
+
+      .button-container {
+        
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 20px;
+        align-items: center;
+        margin-left: 40%
+        
+      }
+
+      a {
+        align-items: center;
+        text-decoration: none;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px 20px;
+        background-color: #ffff00;
+        color: #000000;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      a :hover {
+        background-color: #cccc00;
+        color: #000000;
+      }
+
+      /* Media Query for Mobile Devices */
+      @media (max-width: 768px) {
         .table-container .table {
-            width: 40%;
-            margin-right: 20px;
-            margin-left: 20px;
+          width: 90%; /* Adjust the width as needed */
+          margin: 0 auto;
+          margin-bottom: 20px;
         }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            outline: 1px solid #ffffff;
-        }
-
-        th, td {
-            text-align: center;
-            padding: 8px;
-            border-bottom: 1px solid #ffffff;
-        }
-
-        tr:nth-child(even) {
-            background-color: #292929;
-        }
-
-        tr:hover {
-            background-color: #3f3f3f;
-        }
-
-        caption {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            margin-top: 10px;
-        }
-
-        p {
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 10px;
-            text-align: center;
-            color: #ffff00; 
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 40px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 25px;
-            margin-bottom: 20px;
-        }
-
-        .total {
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 10px;
-            color: #ffff00; 
-        }
-
-        a {
-            align-items: center;
-            text-decoration: none;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            padding: 10px 20px;
-            background-color: #ffff00;
-            color: #000000;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-left: 45%;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        a :hover {
-            background-color: #cccc00;
-            color: #000000;
-        }
-
-         /* Media Query for Mobile Devices */
-        @media (max-width: 768px) {
-            .table-container .table {
-                width: 90%; /* Adjust the width as needed */
-                margin: 0 auto;
-                margin-bottom: 20px;
-            }
-        }
-
-
-
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Processing Results</h1>
 
     <h2>Best Algorithm(s):</h2>
     {% for algorithm in best_algorithms %}
-        <p>{{ algorithm }}</p>
+    <p>{{ algorithm }}</p>
     {% endfor %}
 
-<div class="table-container">
-    <div class="table">
+    <div class="table-container">
+      <div class="table">
         <table>
-            <caption>FIRST IN FIRST OUT ALGORITHM</caption> 
-            <tr>
-                <th>Step</th>
-                <th>Page</th>
-                <th>Frames</th>
-                <th>Hit/Miss</th>
-            </tr>
-            {% for step in result1 %}
-                <tr>
-                    <td>{{ step.step }}</td>
-                    <td>{{ step.page }}</td>
-                    <td>{{ step.frames }}</td>
-                    <td>{{ step.hit_miss }}</td>
-                </tr>
-            {% endfor %}
-            <tr>
-                <td colspan="4" class="total"   >Total Page Faults: {{ total_faults1 }}</td>
-            </tr>
+          <caption>
+            FIRST IN FIRST OUT ALGORITHM
+          </caption>
+          <tr>
+            <th>Step</th>
+            <th>Page</th>
+            <th>Frames</th>
+            <th>Hit/Miss</th>
+          </tr>
+          {% for step in result1 %}
+          <tr>
+            <td>{{ step.step }}</td>
+            <td>{{ step.page }}</td>
+            <td>{{ step.frames }}</td>
+            <td>{{ step.hit_miss }}</td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td colspan="4" class="total">
+              Total Page Faults: {{ total_faults1 }}
+            </td>
+          </tr>
         </table>
+      </div>
+
+      <div class="table">
+        <table>
+          <caption>
+            LEAST RECENTLY USED ALGORITHM
+          </caption>
+          <tr>
+            <th>Step</th>
+            <th>Page</th>
+            <th>Frames</th>
+            <th>Hit/Miss</th>
+          </tr>
+          {% for step in result2 %}
+          <tr>
+            <td>{{ step.step }}</td>
+            <td>{{ step.page }}</td>
+            <td>{{ step.frames }}</td>
+            <td>{{ step.hit_miss }}</td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td colspan="4" class="total">
+              Total Page Faults: {{ total_faults2 }}
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
 
-    <div class="table">
+    <div class="table-container">
+      <div class="table">
         <table>
-            <caption>LEAST RECENTLY USED ALGORITHM</caption> 
-            <tr>
-                <th>Step</th>
-                <th>Page</th>
-                <th>Frames</th>
-                <th>Hit/Miss</th>
-            </tr>
-            {% for step in result2 %}
-                <tr>
-                    <td>{{ step.step }}</td>
-                    <td>{{ step.page }}</td>
-                    <td>{{ step.frames }}</td>
-                    <td>{{ step.hit_miss }}</td>
-                </tr>
-            {% endfor %}
-            <tr>
-                <td colspan="4" class="total"   >Total Page Faults: {{ total_faults2 }}</td>
-            </tr>
+          <caption>
+            LEAST FREQUENTLY USED ALGORITHM
+          </caption>
+          <tr>
+            <th>Step</th>
+            <th>Page</th>
+            <th>Frames</th>
+            <th>Hit/Miss</th>
+          </tr>
+          {% for step in result3 %}
+          <tr>
+            <td>{{ step.step }}</td>
+            <td>{{ step.page }}</td>
+            <td>{{ step.frames }}</td>
+            <td>{{ step.hit_miss }}</td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td colspan="4" class="total">
+              Total Page Faults: {{ total_faults3 }}
+            </td>
+          </tr>
         </table>
-    </div>
-</div>
+      </div>
 
-<div class="table-container">
-    <div class="table">
+      <div class="table">
         <table>
-            <caption>LEAST FREQUENTLY USED ALGORITHM</caption> 
-            <tr>
-                <th>Step</th>
-                <th>Page</th>
-                <th>Frames</th>
-                <th>Hit/Miss</th>
-            </tr>
-            {% for step in result3 %}
-                <tr>
-                    <td>{{ step.step }}</td>
-                    <td>{{ step.page }}</td>
-                    <td>{{ step.frames }}</td>
-                    <td>{{ step.hit_miss }}</td>
-                </tr>
-            {% endfor %}
-            <tr>
-                <td colspan="4" class="total"  >Total Page Faults: {{ total_faults3 }}</td>
-            </tr>
+          <caption>
+            MOST FREQUENTLY USED ALGORITHM
+          </caption>
+          <tr>
+            <th>Step</th>
+            <th>Page</th>
+            <th>Frames</th>
+            <th>Hit/Miss</th>
+          </tr>
+          {% for step in result4 %}
+          <tr>
+            <td>{{ step.step }}</td>
+            <td>{{ step.page }}</td>
+            <td>{{ step.frames }}</td>
+            <td>{{ step.hit_miss }}</td>
+          </tr>
+          {% endfor %}
+
+          <tr>
+            <td colspan="4" class="total">
+              Total Page Faults: {{ total_faults4 }}
+            </td>
+          </tr>
         </table>
+      </div>
     </div>
 
-    <div class="table">
-        <table>
-            <caption>MOST FREQUENTLY USED ALGORITHM</caption> 
-            <tr>
-                <th>Step</th>
-                <th>Page</th>
-                <th>Frames</th>
-                <th>Hit/Miss</th>
-            </tr>
-            {% for step in result4 %}
-                <tr>
-                    <td>{{ step.step }}</td>
-                    <td>{{ step.page }}</td>
-                    <td>{{ step.frames }}</td>
-                    <td>{{ step.hit_miss }}</td>
-                </tr>
-            {% endfor %}
-
-            <tr>
-                <td colspan="4" class="total">Total Page Faults: {{ total_faults4 }}</td>
-            </tr>
-        </table>
+    <div class="button-container">
+      <a href="{% url 'homepage' %}">Go back</a>
+      <a href="{% url 'aboutus' %}">About Us</a>
     </div>
-</div>
+  </body>
 
-    
-
-    <a href="{% url 'homepage' %}">Go back</a>
-</body>
 </html>
