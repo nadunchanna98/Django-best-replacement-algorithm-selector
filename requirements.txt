@@ -9,7 +9,7 @@ Django
 executing==1.2.0
 fastjsonschema==2.16.3
 ipykernel
-ipython==8.13.1
+ipython
 ipython-genutils==0.2.0
 jedi==0.18.2
 jupyter_client==8.2.0
