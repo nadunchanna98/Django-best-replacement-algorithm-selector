@@ -36,8 +36,6 @@ def fifo(numbers, num_frames):
     return result, total_faults
 
 
-
-
 def lru(numbers, num_frames):
     frames = []
     hits = 0
@@ -46,10 +44,9 @@ def lru(numbers, num_frames):
     tempFrames = []
 
     for num in numbers:
-        step = {}
-        step["page"] = num
-        #step["frames"] = frames.copy()
-
+        step = {}    # step is a dictionary
+        step["page"] = num  
+ 
         if num in frames:
             hits += 1
             frames.remove(num)
@@ -57,15 +54,15 @@ def lru(numbers, num_frames):
             step["hit_miss"] = "Hit"
             
         else:
-            if len(frames) < num_frames:
+            if len(frames) < num_frames: 
                 frames.append(num)
                 tempFrames.append(num)
                 
             else:
-                
-                if frames[0] in tempFrames:
-                        index = tempFrames.index(frames[0])
-                        tempFrames[index] = num 
+                      
+                if frames[0] in tempFrames:     # For displaying perpose  #take least number in frame
+                        index = tempFrames.index(frames[0])    # find the index of the least number in tempFrames
+                        tempFrames[index] = num     # replace the least number with the new number
                         
                 frames.pop(0)
                 frames.append(num)
@@ -82,41 +79,41 @@ def lru(numbers, num_frames):
 
 
 def lfu(numbers, num_frames):
-    frames = []
+    frames = []  # List of numbers ,size = num_frames
     hits = 0
     misses = 0
-    result = []
-    tempNumbers = []
+    result = []  # List of dictionaries, size = len(numbers)
+    tempNumbers = []  # this list have the same number of elements as numbers
 
     for num2 in numbers:
-        step = {}
-        step["page"] = num2
+        step = {}  # step is a dictionary
+        step["page"] = num2   # step["page"] is a key and num2 is a value
         tempNumbers.append(num2)
 
-        if num2 in frames:
+        if num2 in frames:   # if num2 is already in frames then it is a hit
             hits += 1
             step["hit_miss"] = "Hit"
         else:
-            if len(frames) < num_frames:
-                frames.append(num2)
-                misses += 1
+            if len(frames) < num_frames:   # for the first time, frames is empty so len(frames) is 1,2, ... < num_frames
+                frames.append(num2)      # append is a function to add a value to a list
+                misses += 1    
                 step["hit_miss"] = "Miss"
             else:
-                min_freq = float('inf')
-                min_freq_num = None
+                min_freq = float('inf')    # float('inf') is a very large number. It is used to compare with the frequency of each number in frames
+                min_freq_num = None        # min_freq_num is the number with the minimum frequency in frames
 
                 for num3 in frames:
-                    freq = tempNumbers.count(num3)
+                    freq = tempNumbers.count(num3)  # count is a function to count the frequency of a number in a list
                     if freq < min_freq:
                         min_freq = freq
                         min_freq_num = num3
                     elif freq == min_freq:
-                        if tempNumbers.index(num3) > tempNumbers.index(min_freq_num):
+                        if tempNumbers.index(num3) > tempNumbers.index(min_freq_num): # index is a function to get the index of a number in a list
                             min_freq_num = min_freq_num
                         else:
                             min_freq_num = num3
 
-                frames[frames.index(min_freq_num)] = num2
+                frames[frames.index(min_freq_num)] = num2 # replace the number with the minimum frequency with num2
                 misses += 1
                 step["hit_miss"] = "Miss"
 
