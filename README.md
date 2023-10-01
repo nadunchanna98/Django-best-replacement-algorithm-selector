@@ -1,5 +1,7 @@
 # Django Best Replacement Algorithm Selector
 
+https://github.com/nadunchanna98/Django-best-replacement-algorithm-selector/assets/108536998/e598eb31-44a7-4979-99da-9f19d613d709
+
 ## Problem Statement:
 
 This Django project is designed to solve the following problem:
